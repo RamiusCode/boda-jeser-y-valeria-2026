@@ -1,0 +1,111 @@
+---
+// Ceremonia.astro — Fecha, templo y hora de la ceremonia religiosa
+// ⚠️ Reemplazar `mapa` por el enlace exacto del pin cuando lo tengas.
+const mapa =
+    "https://www.google.com/maps/search/?api=1&query=Parroquia+Sagrado+Coraz%C3%B3n+de+Mar%C3%ADa+Equipetrol+Santa+Cruz+de+la+Sierra";
+
+const calendario =
+    "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda%20de%20Jeser%20y%20Valeria&dates=20261219T203000Z/20261220T060000Z&details=Ceremonia%20religiosa%20en%20la%20Parroquia%20Sagrado%20Coraz%C3%B3n%20de%20Mar%C3%ADa%20a%20las%2016%3A30%20y%20recepci%C3%B3n%20en%20el%20Sal%C3%B3n%20La%20Rochelle%20a%20las%2019%3A00.&location=Parroquia%20Sagrado%20Coraz%C3%B3n%20de%20Mar%C3%ADa%2C%20Equipetrol%2C%20Santa%20Cruz%20de%20la%20Sierra";
+---
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- ⛪ SECCIÓN: CEREMONIA                                       -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="relative w-full py-12 sm:py-16 md:py-20">
+    <div class="max-w-4xl mx-auto px-5 sm:px-8">
+        <!-- INVITACIÓN -->
+        <p
+            data-revelar="abajo"
+            class="opacity-0 texto-invitacion uppercase text-center text-[0.85rem] sm:text-[1.05rem] md:text-[1.2rem] tracking-[0.06em] leading-[1.7]"
+        >
+            Consagramos nuestra uni&oacute;n y tenemos el placer<br
+                class="hidden sm:block"
+            /> de invitarlos a la ceremonia que se celebrar&aacute; el
+        </p>
+
+        <!-- BLOQUE FECHA | LUGAR | HORA -->
+        <div
+            data-revelar="abajo"
+            data-retraso="0.15"
+            class="opacity-0 mt-9 sm:mt-12 grid grid-cols-[auto_1px_1fr_1px_auto] items-center gap-3 sm:gap-6 md:gap-8"
+        >
+            <!-- FECHA -->
+            <div class="flex flex-col items-center leading-none">
+                <span
+                    class="texto-invitacion uppercase text-[0.6rem] sm:text-[0.85rem] tracking-[0.14em]"
+                >
+                    S&aacute;bado
+                </span>
+                <span
+                    class="font-cormorant text-[var(--champan)] my-0.5 sm:my-1 text-[2.4rem] sm:text-[3.6rem] md:text-[4.4rem] leading-none"
+                >
+                    19
+                </span>
+                <span
+                    class="texto-invitacion uppercase text-[0.6rem] sm:text-[0.85rem] tracking-[0.14em]"
+                >
+                    Diciembre
+                </span>
+            </div>
+
+            <!-- DIVISOR -->
+            <div class="divisor-vertical h-24 sm:h-32 md:h-36"></div>
+
+            <!-- LUGAR -->
+            <div class="flex flex-col items-center text-center px-1">
+                <h2
+                    class="titulo-seccion text-[1.05rem] sm:text-[1.7rem] md:text-[2.1rem] leading-[1.12]"
+                >
+                    Parroquia Sagrado<br /> Coraz&oacute;n de Mar&iacute;a
+                </h2>
+                <p
+                    class="texto-invitacion uppercase mt-2 sm:mt-3 text-[0.62rem] sm:text-[0.82rem] md:text-[0.92rem] tracking-[0.05em] leading-snug text-[var(--tinta-media)]"
+                >
+                    Equipetrol, Av. San Mart&iacute;n<br /> Calle La Plata 8 Este
+                </p>
+            </div>
+
+            <!-- DIVISOR -->
+            <div class="divisor-vertical h-24 sm:h-32 md:h-36"></div>
+
+            <!-- HORA -->
+            <div class="flex flex-col items-center leading-none">
+                <span
+                    class="font-cormorant text-[var(--champan)] text-[1.9rem] sm:text-[3rem] md:text-[3.7rem] leading-none"
+                >
+                    16:30
+                </span>
+                <span
+                    class="texto-invitacion uppercase mt-1 text-[0.6rem] sm:text-[0.85rem] tracking-[0.14em]"
+                >
+                    Horas
+                </span>
+            </div>
+        </div>
+
+        <!-- BOTONES -->
+        <div
+            data-revelar="abajo"
+            data-retraso="0.3"
+            class="opacity-0 mt-10 sm:mt-14 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
+        >
+            <a
+                href={mapa}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full sm:w-auto text-center texto-invitacion uppercase text-[0.66rem] sm:text-[0.75rem] tracking-[0.24em] border border-[var(--verde)] px-8 sm:px-10 py-3 sm:py-3.5 transition-colors duration-300 hover:bg-[var(--verde-hondo)] hover:text-white"
+            >
+                C&oacute;mo llegar
+            </a>
+
+            <a
+                href={calendario}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full sm:w-auto text-center texto-invitacion uppercase text-[0.66rem] sm:text-[0.75rem] tracking-[0.24em] border border-[var(--champan-tenue)] text-[var(--tinta-media)] px-8 sm:px-10 py-3 sm:py-3.5 transition-colors duration-300 hover:border-[var(--verde)] hover:text-[var(--champan)]"
+            >
+                Agendar la fecha
+            </a>
+        </div>
+    </div>
+</section>

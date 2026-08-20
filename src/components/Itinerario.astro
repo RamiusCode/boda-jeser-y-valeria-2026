@@ -1,0 +1,73 @@
+---
+// Itinerario.astro
+// ⚠️ PENDIENTE: confirmar los horarios posteriores a la recepción.
+const momentos = [
+    { hora: "16:30", titulo: "Ceremonia religiosa", icono: "/imagenes/iglesia.png" },
+    { hora: "19:00", titulo: "Recepci\u00f3n", icono: "/imagenes/recepcion.png" },
+    { hora: "19:30", titulo: "Brindis", icono: "/imagenes/brindis.png" },
+    { hora: "20:30", titulo: "Cena", icono: "/imagenes/cena.png" },
+    { hora: "21:30", titulo: "Torta", icono: "/imagenes/torta.png" },
+    { hora: "22:00", titulo: "Fiesta y baile", icono: "/imagenes/musica.png" },
+];
+---
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 🕰️ SECCIÓN: ITINERARIO                                      -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="relative w-full py-12 sm:py-16 md:py-20">
+    <div class="max-w-2xl mx-auto px-6 sm:px-8">
+        <!-- TÍTULO -->
+        <h2
+            data-revelar="abajo"
+            class="opacity-0 titulo-seccion text-center text-[1.9rem] sm:text-[2.6rem] md:text-[3.1rem]"
+        >
+            Itinerario
+        </h2>
+
+        <div class="w-16 sm:w-20 mx-auto mt-5 sm:mt-6">
+            <div class="regla" data-linea></div>
+        </div>
+
+        <!-- LÍNEA DE TIEMPO -->
+        <div class="relative mt-12 sm:mt-16">
+            <!-- EJE VERTICAL -->
+            <span
+                class="absolute left-[3.6rem] sm:left-[5.2rem] top-2 bottom-2 w-px bg-[var(--verde-tenue)]"
+            ></span>
+
+            <div class="flex flex-col gap-8 sm:gap-10">
+                {
+                    momentos.map((momento, i) => (
+                        <div
+                            data-revelar="izquierda"
+                            data-retraso={(i * 0.08).toFixed(2)}
+                            class="opacity-0 relative grid grid-cols-[3.6rem_auto_1fr] sm:grid-cols-[5.2rem_auto_1fr] items-center gap-4 sm:gap-6"
+                        >
+                            {/* HORA */}
+                            <span class="font-trajan text-[var(--champan)] text-right text-[1.15rem] sm:text-[1.5rem] leading-none tabular-nums pr-3 sm:pr-5">
+                                {momento.hora}
+                            </span>
+
+                            {/* PUNTO SOBRE EL EJE */}
+                            <span class="w-[7px] h-[7px] rounded-full bg-[var(--verde)] -ml-[3.5px] shrink-0" />
+
+                            {/* ICONO + TÍTULO */}
+                            <div class="flex items-center gap-3 sm:gap-4 pl-1">
+                                <img
+                                    src={momento.icono}
+                                    alt=""
+                                    aria-hidden="true"
+                                    class="w-7 h-7 sm:w-9 sm:h-9 object-contain tinta-imagen opacity-80"
+                                    loading="lazy"
+                                />
+                                <p class="texto-invitacion uppercase text-[0.78rem] sm:text-[0.95rem] tracking-[0.12em]">
+                                    {momento.titulo}
+                                </p>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,242 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════ */
+/* 📱 UN SOLO DISEÑO PARA TODOS LOS DISPOSITIVOS               */
+/* ═══════════════════════════════════════════════════════════ */
+/*                                                             */
+/*  La invitación se ve igual en móvil, tablet y escritorio:   */
+/*  siempre en una columna del ancho de un teléfono.           */
+/*                                                             */
+/*  Para conseguirlo se hacen dos cosas:                       */
+/*                                                             */
+/*  1. Los cortes de Tailwind (sm:, md:, lg:...) se empujan a  */
+/*     9999px, así ninguna utilidad responsive llega a         */
+/*     aplicarse y todo usa siempre el valor de móvil. Las     */
+/*     @media sueltas de los componentes usan ese mismo        */
+/*     9999px por la misma razón.                              */
+/*                                                             */
+/*  2. El contenido se limita a --ancho-movil y se centra.     */
+/*                                                             */
+/*  Para volver a un diseño adaptable: devolver los cortes a   */
+/*  640px/768px/1024px y quitar el límite de ancho.            */
+/*                                                             */
+/* ═══════════════════════════════════════════════════════════ */
+
+@theme {
+  --breakpoint-sm: 9999px;
+  --breakpoint-md: 9999px;
+  --breakpoint-lg: 9999px;
+  --breakpoint-xl: 9999px;
+  --breakpoint-2xl: 9999px;
+}
+
+:root {
+  --ancho-movil: 430px;
+}
+
+/* ═══════════════════════════════════════════════════════════ */
+/* 🔤 FUENTES LOCALES                                          */
+/* ═══════════════════════════════════════════════════════════ */
+
+/* Trajan Pro — la tipografía de la invitación.
+   Es capitular: no tiene minúsculas, las convierte en versalitas.
+   Por eso todos los textos van con `uppercase`. */
+@font-face {
+  font-family: 'Trajan Pro';
+  src: url('/fonts/TrajanPro-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cormorant SC';
+  src: url('/fonts/CormorantSC-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cormorant SC';
+  src: url('/fonts/CormorantSC-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cormorant SC';
+  src: url('/fonts/CormorantSC-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cormorant SC';
+  src: url('/fonts/CormorantSC-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cormorant SC';
+  src: url('/fonts/CormorantSC-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ═══════════════════════════════════════════════════════════ */
+/* 🎨 PALETA — CHAMPAGNE · VERDE                               */
+/* ═══════════════════════════════════════════════════════════ */
+/*                                                             */
+/*  CHAMPAGNE  → texto principal: "Nos casamos", bendición,    */
+/*               títulos de sección, cifras y filetes.         */
+/*  VERDE HONDO→ cuerpo de texto en versalitas.                */
+/*  SALVIA     → iniciales, bordes, marcos, botones, eje del   */
+/*               itinerario y puntos.                          */
+/*                                                             */
+/* ═══════════════════════════════════════════════════════════ */
+
+:root {
+  /* Papel */
+  --papel: #fcfaf5;
+  --papel-calido: #f6f0e4;
+
+  /* Champagne — tono medio */
+  --champan: #b4914e;
+  --champan-claro: #cbae77;
+  --champan-tenue: #e6dac2;
+  --champan-luz: #f2eadb; /* dorado muy claro: texto sobre el sobre verde */
+  --champan-oscuro: #8e7038;
+
+  /* Verde salvia — color del cliente, y sus dos vecinos del mismo tono.
+     Salvia manda en lo estructural (bordes, marcos, ejes, botones);
+     el hondo se reserva para texto pequeño y rellenos, donde el salvia
+     no daría suficiente contraste sobre el papel. */
+  --verde: #67845d;
+  --verde-hondo: #465e49;
+  --verde-tenue: #d5ddd0;
+
+  /* Alias heredado: apunta al verde legible para textos pequeños */
+  --verde-medio: var(--verde-hondo);
+
+  /* Negro — ya no se usa en textos; queda por si hace falta */
+  --tinta: #141414;
+  --tinta-media: #3a3a3a;
+  --tinta-suave: #6a6a6a;
+
+  /* Trazos */
+  --linea: var(--champan);
+  --linea-tenue: var(--champan-tenue);
+}
+
+/* ═══════════════════════════════════════════════════════════ */
+/* 🖋️ FAMILIAS                                                 */
+/* ═══════════════════════════════════════════════════════════ */
+
+/* Trajan Pro: TODA la invitación — textos, títulos y cifras */
+.font-trajan {
+  font-family: 'Trajan Pro', 'Cormorant SC', serif !important;
+}
+
+/* Caligrafía: firma de la despedida */
+.font-italianno {
+  font-family: 'Italianno', cursive !important;
+}
+
+/* Alias heredados — apuntan a Trajan para no romper componentes viejos */
+.font-sc,
+.font-cormorant {
+  font-family: 'Trajan Pro', 'Cormorant SC', serif !important;
+}
+
+/* ═══════════════════════════════════════════════════════════ */
+/* 📐 ELEMENTOS COMPARTIDOS                                    */
+/* ═══════════════════════════════════════════════════════════ */
+
+/* Van en la capa `components` para que cualquier utilidad de Tailwind
+   (por ejemplo text-[var(--champan)]) pueda sobrescribirlas. */
+@layer components {
+  /* Texto corrido en versalitas — VERDE HONDO */
+  .texto-invitacion {
+    font-family: 'Trajan Pro', 'Cormorant SC', serif;
+    color: var(--verde-hondo);
+    letter-spacing: 0.045em;
+    line-height: 1.6;
+  }
+
+  /* Título de sección — CHAMPAGNE */
+  .titulo-seccion {
+    font-family: 'Trajan Pro', 'Cormorant SC', serif;
+    text-transform: uppercase;
+    color: var(--champan);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    line-height: 1;
+  }
+
+  /* Filete fino — CHAMPAGNE */
+  .regla {
+    height: 1px;
+    background-color: var(--champan);
+    transform-origin: center;
+  }
+
+  .regla-tenue {
+    height: 1px;
+    background-color: var(--champan-tenue);
+    transform-origin: center;
+  }
+
+  /* Barra gruesa que corta la hoja — VERDE */
+  .regla-gruesa {
+    height: 4px;
+    background-color: var(--verde-hondo);
+    transform-origin: center;
+  }
+
+  /* Separador vertical de los bloques fecha | lugar | hora */
+  .divisor-vertical {
+    width: 1px;
+    background-color: var(--champan);
+  }
+
+  /* Tarjeta discreta: un velo champagne sobre el papel, filete de
+     un pixel y una sombra apenas perceptible. Sin esquinas redondeadas
+     ni relleno opaco, para que no compita con el texto. */
+  .tarjeta-suave {
+    background-color: color-mix(in srgb, var(--papel-calido) 65%, transparent);
+    border: 1px solid var(--champan-tenue);
+    box-shadow: 0 1px 22px rgb(143 112 56 / 0.05);
+  }
+
+  /* Tarjeta blanca con trazo verde y un segundo filete interior.
+     El doble marco es el recurso clásico de la papelería de bodas:
+     da presencia sin necesidad de rellenos ni sombras marcadas.
+     Los radios son concéntricos — el filete va a 7px del borde, así
+     que su radio es 7px menor. Sin eso las esquinas se ven torcidas. */
+  .tarjeta-blanca {
+    background-color: #ffffff;
+    border: 1px solid var(--verde);
+    border-radius: 14px;
+    box-shadow: 0 2px 28px rgb(47 65 54 / 0.06);
+  }
+
+  .tarjeta-blanca-filete {
+    position: absolute;
+    inset: 7px;
+    border: 1px solid var(--verde-tenue);
+    border-radius: 7px;
+    pointer-events: none;
+  }
+
+  /* Las imágenes de referencia se tiñen para entrar en la paleta */
+  .tinta-imagen {
+    filter: grayscale(1) contrast(1.05) sepia(0.35) saturate(1.15)
+      hue-rotate(-8deg) brightness(0.95);
+  }
+}

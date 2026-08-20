@@ -1,0 +1,102 @@
+---
+// Padres.astro — Bendición y nombres de los padres
+const padresNovio = ["Vladimir Nestor Vega Campos", "Madai Teresa Diaz Yaca (+)"];
+const padresNovia = ["Hubert Gallardo Carrasco (+)", "Narda Elizabeth Ulloa Reyes"];
+---
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 🕊️ SECCIÓN: PADRES                                          -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="relative w-full pt-4 pb-4 sm:pt-5 sm:pb-5 md:pt-6 md:pb-6">
+    <div class="max-w-lg mx-auto px-6 sm:px-8">
+        <!-- TARJETA -->
+        <div
+            data-revelar="escala"
+            class="opacity-0 tarjeta-blanca relative px-6 pt-10 pb-9 sm:px-10 sm:pt-12 sm:pb-11 flex flex-col items-center text-center"
+        >
+            <!-- FILETE INTERIOR -->
+            <span class="tarjeta-blanca-filete"></span>
+
+            <!-- ENCABEZADO -->
+            <h2
+                class="relative titulo-seccion text-center text-[1.1rem] sm:text-[1.35rem] md:text-[1.5rem] tracking-normal leading-[1.4]"
+            >
+                Con la bendici&oacute;n de Dios<br /> y nuestros padres
+            </h2>
+
+            <!-- ICONO -->
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 48 48"
+                fill="none"
+                aria-hidden="true"
+                class="relative mt-7 sm:mt-9 w-[3.2rem] h-[3.2rem] sm:w-[3.8rem] sm:h-[3.8rem]"
+            >
+                <path
+                    d="M24 40s-11.5-7.2-11.5-15.2c0-4 3.1-7 7-7 2.8 0 4.4 1.6 4.5 3.3.1-1.7 1.7-3.3 4.5-3.3 3.9 0 7 3 7 7C35.5 32.8 24 40 24 40z"
+                    stroke="var(--verde)"
+                    stroke-width="1.6"
+                    stroke-linejoin="round"></path>
+                <line
+                    x1="24"
+                    y1="6"
+                    x2="24"
+                    y2="15"
+                    stroke="var(--champan)"
+                    stroke-width="1.6"
+                    stroke-linecap="round"></line>
+                <line
+                    x1="19.5"
+                    y1="10"
+                    x2="28.5"
+                    y2="10"
+                    stroke="var(--champan)"
+                    stroke-width="1.6"
+                    stroke-linecap="round"></line>
+            </svg>
+
+            <!-- PADRES DEL NOVIO -->
+            <p
+                class="relative texto-invitacion uppercase mt-7 sm:mt-9 text-[0.82rem] sm:text-[0.96rem] md:text-[1.05rem] tracking-[0.2em] indent-[0.2em] text-[var(--champan)]"
+            >
+                Padres del novio
+            </p>
+
+            <div
+                class="relative mt-3 flex flex-col items-center gap-1.5 sm:gap-2"
+            >
+                {
+                    padresNovio.map((nombre) => (
+                        <p class="texto-invitacion uppercase text-[0.76rem] sm:text-[0.92rem] md:text-[0.99rem] tracking-[0.05em] leading-snug">
+                            {nombre}
+                        </p>
+                    ))
+                }
+            </div>
+
+            <!-- SEPARADOR -->
+            <div class="relative w-14 my-6 sm:my-7">
+                <div class="regla-tenue" data-linea></div>
+            </div>
+
+            <!-- PADRES DE LA NOVIA -->
+            <p
+                class="relative texto-invitacion uppercase text-[0.82rem] sm:text-[0.96rem] md:text-[1.05rem] tracking-[0.2em] indent-[0.2em] text-[var(--champan)]"
+            >
+                Padres de la novia
+            </p>
+
+            <div
+                class="relative mt-3 flex flex-col items-center gap-1.5 sm:gap-2"
+            >
+                {
+                    padresNovia.map((nombre) => (
+                        <p class="texto-invitacion uppercase text-[0.76rem] sm:text-[0.92rem] md:text-[0.99rem] tracking-[0.05em] leading-snug">
+                            {nombre}
+                        </p>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,168 @@
+---
+// Portada.astro — Sobre de apertura
+---
+
+<section
+    id="portada-sobre"
+    class="fixed inset-0 w-full h-[100dvh] z-50 flex flex-col items-center justify-between overflow-hidden pt-10 pb-20 sm:pt-14 sm:pb-24 md:pt-16 md:pb-28 px-6"
+>
+    <!-- SOBRE DE FONDO -->
+    <div class="fondo-sobre" aria-hidden="true"></div>
+
+    <!-- TEXTO SUPERIOR -->
+    <div class="relative z-10 text-center">
+        <h1
+            class="texto-invitacion uppercase text-[1.05rem] sm:text-[1.3rem] md:text-[1.45rem] tracking-[0.34em] indent-[0.34em] text-[var(--champan-luz)]"
+        >
+            Dale en el bot&oacute;n
+        </h1>
+
+        <p
+            class="texto-invitacion uppercase mt-3 sm:mt-4 text-[0.7rem] sm:text-[0.82rem] md:text-[0.9rem] tracking-[0.16em] leading-[1.9] text-[var(--champan-luz)]"
+        >
+            Para abrir la invitaci&oacute;n
+        </p>
+    </div>
+
+    <!-- SELLO -->
+    <!-- Va posicionado en absoluto sobre el vértice de la solapa del
+         sobre (67% de la altura), no dentro del flujo, para que quede
+         siempre en el mismo punto del dibujo. -->
+    <div
+        class="absolute left-1/2 top-[48%] -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-auto"
+    >
+        <button
+            id="btn-sello"
+            aria-label="Abrir la invitaci&oacute;n"
+            class="relative block cursor-pointer transition-transform duration-300 hover:scale-110 active:scale-95 focus:outline-none"
+        >
+            <img
+                src="/imagenes/boton.png"
+                alt="Sello de lacre con las iniciales J y V"
+                class="w-32 h-32 drop-shadow-[0_6px_18px_rgba(0,0,0,0.25)]"
+            />
+        </button>
+    </div>
+
+    <!-- NOMBRES -->
+    <!-- También en absoluto, anclado a un punto del sobre, para que no
+         baje ni suba según lo alta que sea la pantalla. -->
+    <div class="absolute left-1/2 top-[72%] -translate-x-1/2 z-10">
+        <div class="nombres-sobre" role="img" aria-label="Jeser y Valeria"></div>
+    </div>
+</section>
+
+<script>
+    import { gsap } from "gsap";
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const btnSello = document.getElementById("btn-sello");
+        const portada = document.getElementById("portada-sobre");
+
+        // Animación de entrada sutil del sello (SIN cambios de opacidad)
+        gsap.from("#btn-sello", {
+            scale: 0.8,
+            duration: 1.5,
+            ease: "elastic.out(1, 0.5)",
+            delay: 0.5,
+        });
+
+        // Animación de respiración del sello (SIN cambios de opacidad)
+        gsap.to("#btn-sello", {
+            scale: 1.05,
+            duration: 2.5,
+            ease: "sine.inOut",
+            yoyo: true,
+            repeat: -1,
+        });
+
+        btnSello?.addEventListener("click", () => {
+            // Crear y reproducir música automáticamente
+            const audio = new Audio("/musica/melodia.mp3");
+            audio.loop = true;
+            audio.volume = 0.5;
+            audio.play().catch((error: any) => {
+                console.log("Error al reproducir audio:", error);
+            });
+
+            // Guardar en window para que Monograma pueda controlarlo
+            (window as any).audioGlobal = audio;
+            (window as any).estaReproduciendoGlobal = true;
+
+            // Actualizar iconos inmediatamente
+            setTimeout(() => {
+                const iconoPlay = document.getElementById("icono-play");
+                const iconoPause = document.getElementById("icono-pause");
+
+                if (iconoPlay && iconoPause) {
+                    iconoPlay.classList.add("hidden");
+                    iconoPause.classList.remove("hidden");
+                }
+            }, 100);
+
+            gsap.to(portada, {
+                opacity: 0,
+                duration: 0.8,
+                ease: "power2.out",
+                onStart: () => {
+                    document.body.style.overflow = "auto";
+                },
+                onComplete: () => {
+                    portada?.remove(); // Eliminar completamente del DOM
+                },
+            });
+        });
+    });
+</script>
+
+<style>
+    body {
+        overflow: hidden;
+    }
+
+    /* ═══════════════════════════════════════════════════════════ */
+    /* ✉️ SOBRE DE FONDO                                           */
+    /* Se ajusta al ANCHO de la pantalla y se estira en vertical   */
+    /* lo que haga falta (background-size: 100% 100%), para que    */
+    /* el sobre se vea entero y sin franjas a los lados en         */
+    /* cualquier proporción de móvil.                              */
+    /* ═══════════════════════════════════════════════════════════ */
+    /* El sobre ocupa la misma columna que el resto de la invitación,
+       centrado, para que en escritorio no se despliegue a lo ancho. */
+    #portada-sobre {
+        left: 50%;
+        right: auto;
+        width: min(100%, var(--ancho-movil));
+        transform: translateX(-50%);
+    }
+
+    .fondo-sobre {
+        position: absolute;
+        inset: 0;
+        background-image: url("/imagenes/sobre.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-color: #67755d;
+    }
+
+    /* ═══════════════════════════════════════════════════════════ */
+    /* ✒️ NOMBRES                                                  */
+    /* El PNG viene en negro sobre fondo transparente: va como     */
+    /* máscara y el color lo pone el CSS, en dorado claro para     */
+    /* que resalte sobre el verde del sobre.                       */
+    /* ═══════════════════════════════════════════════════════════ */
+    .nombres-sobre {
+        width: min(78vw, 17rem);
+        aspect-ratio: 1002 / 274;
+        background-color: var(--champan-luz);
+        -webkit-mask: url("/imagenes/nombres.png") center / contain no-repeat;
+        mask: url("/imagenes/nombres.png") center / contain no-repeat;
+    }
+
+    @media (min-width: 9999px) {
+        .nombres-sobre {
+            width: 22rem;
+        }
+    }
+</style>

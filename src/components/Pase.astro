@@ -1,0 +1,64 @@
+---
+// Pase.astro — Pase personal de ingreso
+export interface Props {
+    numeroPases?: number;
+}
+const { numeroPases = 2 } = Astro.props;
+
+const enPalabras: Record<number, string> = {
+    1: "una",
+    2: "dos",
+    3: "tres",
+    4: "cuatro",
+    5: "cinco",
+    6: "seis",
+};
+const cantidad = enPalabras[numeroPases] ?? String(numeroPases);
+const sufijo = numeroPases === 1 ? "persona" : "personas";
+---
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 🎟️ SECCIÓN: PASE                                            -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="relative w-full py-12 sm:py-16 md:py-20">
+    <div class="max-w-xl mx-auto px-6 sm:px-8">
+        <div
+            data-revelar="escala"
+            class="opacity-0 relative border border-[var(--verde)] bg-[var(--papel)] px-7 py-10 sm:px-12 sm:py-14 flex flex-col items-center text-center"
+        >
+            <!-- MARCO INTERIOR -->
+            <span
+                class="absolute inset-[7px] border border-[var(--champan-tenue)] pointer-events-none"
+            ></span>
+
+            <p
+                class="relative texto-invitacion uppercase text-[0.6rem] sm:text-[0.72rem] tracking-[0.32em] text-[var(--verde-medio)]"
+            >
+                Pase para
+            </p>
+
+            <p
+                class="relative font-trajan text-[var(--champan)] leading-none mt-4 sm:mt-5 text-[3.4rem] sm:text-[4.6rem] md:text-[5.4rem]"
+            >
+                {numeroPases}
+            </p>
+
+            <p
+                class="relative texto-invitacion uppercase mt-3 sm:mt-4 text-[0.86rem] sm:text-[1.05rem] tracking-[0.14em]"
+            >
+                {cantidad} {sufijo}
+            </p>
+
+            <div class="relative w-14 mx-auto my-7 sm:my-8">
+                <div class="regla-tenue" data-linea></div>
+            </div>
+
+            <p
+                class="relative texto-invitacion uppercase text-[0.66rem] sm:text-[0.78rem] tracking-[0.08em] leading-[1.75] text-[var(--verde-medio)]"
+            >
+                Este pase es personal e intransferible.<br /> Gracias por acompa&ntilde;arnos
+                en este d&iacute;a.
+            </p>
+        </div>
+    </div>
+</section>

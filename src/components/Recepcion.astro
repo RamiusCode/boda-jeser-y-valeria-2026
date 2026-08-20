@@ -1,0 +1,71 @@
+---
+// Recepcion.astro — Salón La Rochelle
+// ⚠️ Reemplazar `mapa` por el enlace exacto del pin cuando lo tengas.
+const mapa =
+    "https://www.google.com/maps/search/?api=1&query=Sal%C3%B3n%20La%20Rochelle%20Calle%2024%20de%20Septiembre%20465%20Santa%20Cruz%20de%20la%20Sierra";
+---
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 🥂 SECCIÓN: RECEPCIÓN                                       -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="relative w-full py-12 sm:py-16 md:py-20">
+    <div class="max-w-4xl mx-auto px-6 sm:px-8">
+        <!-- TÍTULO -->
+        <h2
+            data-revelar="abajo"
+            class="opacity-0 titulo-seccion text-center text-[2.1rem] sm:text-[3rem] md:text-[3.6rem]"
+        >
+            Recepci&oacute;n
+        </h2>
+
+        <!-- INTRODUCCIÓN -->
+        <p
+            data-revelar="abajo"
+            data-retraso="0.12"
+            class="opacity-0 texto-invitacion uppercase text-center mt-7 sm:mt-10 text-[0.82rem] sm:text-[1.02rem] md:text-[1.12rem] tracking-[0.05em] leading-[1.7]"
+        >
+            Pasada la ceremonia los invitamos a la recepci&oacute;n<br
+                class="hidden sm:block"
+            /> a partir de las <span
+                class="font-trajan text-[1.35em] text-[var(--champan)] align-baseline"
+                >19:00</span
+            > horas en el sal&oacute;n
+        </p>
+
+        <!-- LUGAR -->
+        <div
+            data-revelar="escala"
+            data-retraso="0.2"
+            class="opacity-0 mt-8 sm:mt-10 flex flex-col items-center text-center"
+        >
+            <h3
+                class="titulo-seccion text-[1.6rem] sm:text-[2.2rem] md:text-[2.6rem]"
+            >
+                La Rochelle
+            </h3>
+
+            <p
+                class="texto-invitacion uppercase mt-3 sm:mt-4 text-[0.76rem] sm:text-[0.95rem] md:text-[1.05rem] tracking-[0.05em] leading-[1.6] text-[var(--verde-medio)]"
+            >
+                Calle 24 de Septiembre,<br class="sm:hidden" /> entre Seoane y Cuellar
+                #465
+            </p>
+        </div>
+
+        <!-- BOTÓN -->
+        <div
+            data-revelar="abajo"
+            data-retraso="0.3"
+            class="opacity-0 mt-10 sm:mt-12 flex justify-center"
+        >
+            <a
+                href={mapa}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="texto-invitacion uppercase text-[0.66rem] sm:text-[0.75rem] tracking-[0.24em] border border-[var(--verde)] px-9 sm:px-12 py-3 sm:py-3.5 transition-colors duration-300 hover:bg-[var(--verde-hondo)] hover:text-white"
+            >
+                C&oacute;mo llegar
+            </a>
+        </div>
+    </div>
+</section>

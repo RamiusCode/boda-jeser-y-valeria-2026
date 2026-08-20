@@ -1,0 +1,114 @@
+---
+// Contador.astro — Cuenta regresiva hasta la ceremonia
+// 19 de diciembre de 2026, 16:30 · Bolivia (UTC-4)
+const fechaEvento = "2026-12-19T16:30:00-04:00";
+
+const unidades = [
+    { id: "dias", etiqueta: "D\u00edas" },
+    { id: "horas", etiqueta: "Horas" },
+    { id: "minutos", etiqueta: "Minutos" },
+    { id: "segundos", etiqueta: "Segundos" },
+];
+---
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- ⏳ SECCIÓN: CUENTA REGRESIVA                                -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="relative w-full pt-4 pb-12 sm:pt-5 sm:pb-16 md:pt-6 md:pb-20">
+    <div class="max-w-3xl mx-auto px-6 sm:px-8 flex flex-col items-center">
+        <p
+            data-revelar="abajo"
+            class="opacity-0 texto-invitacion uppercase text-center text-[1.05rem] sm:text-[1.25rem] md:text-[1.4rem] tracking-[0.28em] indent-[0.28em] text-[var(--verde-medio)]"
+        >
+            Faltan
+        </p>
+
+        <!-- MARCADOR -->
+        <div
+            data-revelar="abajo"
+            data-retraso="0.15"
+            id="contador"
+            data-fecha={fechaEvento}
+            class="opacity-0 w-full mt-7 sm:mt-9 grid grid-cols-4 border-y border-[var(--champan)]"
+        >
+            {
+                unidades.map((unidad, i) => (
+                    <div
+                        class={`flex flex-col items-center justify-center py-5 sm:py-7 px-1 ${i > 0 ? "border-l border-[var(--champan-tenue)]" : ""}`}
+                    >
+                        <span
+                            id={`contador-${unidad.id}`}
+                            class="font-trajan text-[var(--champan)] leading-none tabular-nums text-[2.1rem] sm:text-[3rem] md:text-[3.6rem]"
+                        >
+                            00
+                        </span>
+                        <span class="texto-invitacion uppercase mt-2 sm:mt-3 text-[0.72rem] sm:text-[0.86rem] md:text-[0.94rem] tracking-[0.2em] text-[var(--verde-medio)]">
+                            {unidad.etiqueta}
+                        </span>
+                    </div>
+                ))
+            }
+        </div>
+
+        <!-- MENSAJE AL LLEGAR LA FECHA -->
+        <p
+            id="contador-mensaje"
+            class="hidden texto-invitacion uppercase text-center mt-7 text-[0.9rem] sm:text-[1.1rem] tracking-[0.14em]"
+        >
+            &iexcl;Hoy es el gran d&iacute;a!
+        </p>
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const contador = document.getElementById("contador");
+        if (!contador) return;
+
+        const destino = new Date(contador.dataset.fecha || "").getTime();
+        const mensaje = document.getElementById("contador-mensaje");
+
+        const campos = {
+            dias: document.getElementById("contador-dias"),
+            horas: document.getElementById("contador-horas"),
+            minutos: document.getElementById("contador-minutos"),
+            segundos: document.getElementById("contador-segundos"),
+        };
+
+        const dosDigitos = (n: number) => String(n).padStart(2, "0");
+
+        const actualizar = () => {
+            const restante = destino - Date.now();
+
+            if (restante <= 0) {
+                Object.values(campos).forEach((campo) => {
+                    if (campo) campo.textContent = "00";
+                });
+                contador.classList.add("hidden");
+                mensaje?.classList.remove("hidden");
+                clearInterval(intervalo);
+                return;
+            }
+
+            const segundosTotales = Math.floor(restante / 1000);
+
+            if (campos.dias)
+                campos.dias.textContent = dosDigitos(
+                    Math.floor(segundosTotales / 86400),
+                );
+            if (campos.horas)
+                campos.horas.textContent = dosDigitos(
+                    Math.floor((segundosTotales % 86400) / 3600),
+                );
+            if (campos.minutos)
+                campos.minutos.textContent = dosDigitos(
+                    Math.floor((segundosTotales % 3600) / 60),
+                );
+            if (campos.segundos)
+                campos.segundos.textContent = dosDigitos(segundosTotales % 60);
+        };
+
+        actualizar();
+        const intervalo = setInterval(actualizar, 1000);
+    });
+</script>

@@ -1,0 +1,129 @@
+---
+// Despedida.astro — Cierre de la invitación
+---
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 💌 SECCIÓN: DESPEDIDA                                       -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="relative w-full pt-4 pb-6 sm:pt-5 sm:pb-8 md:pt-6 md:pb-10">
+    <div
+        class="max-w-lg mx-auto px-6 sm:px-8 flex flex-col items-center text-center"
+    >
+        <!-- ORNAMENTO -->
+        <div class="ornamento opacity-0" data-revelar="abajo">
+            <span class="ornamento-linea"></span>
+            <span class="ornamento-rombo"></span>
+            <span class="ornamento-linea"></span>
+        </div>
+
+        <!-- MENSAJE -->
+        <p
+            data-revelar="abajo"
+            class="opacity-0 texto-invitacion uppercase text-[0.76rem] sm:text-[0.92rem] md:text-[0.99rem] tracking-[0.1em] leading-[2] text-[var(--champan)]"
+        >
+            Y as&iacute; comienza<br /> lo que so&ntilde;amos toda la vida
+        </p>
+
+        <!-- MENSAJE SECUNDARIO -->
+        <p
+            data-revelar="abajo"
+            data-retraso="0.14"
+            class="opacity-0 texto-invitacion uppercase mt-5 sm:mt-6 text-[0.76rem] sm:text-[0.92rem] md:text-[0.99rem] tracking-[0.06em] leading-[1.9] text-[var(--verde-hondo)]"
+        >
+            Gracias por caminar a nuestro lado<br /> y por hacer de este d&iacute;a
+            un recuerdo<br /> que llevaremos para siempre
+        </p>
+
+        <!-- FIRMA -->
+        <div
+            data-revelar="escala"
+            data-retraso="0.28"
+            class="opacity-0 mt-10 sm:mt-12"
+        >
+            <div class="firma" role="img" aria-label="Jeser y Valeria"></div>
+        </div>
+
+        <!-- PIE -->
+        <p
+            data-revelar="abajo"
+            data-retraso="0.4"
+            class="opacity-0 texto-invitacion uppercase mt-7 sm:mt-8 text-[0.62rem] sm:text-[0.72rem] tracking-[0.3em] indent-[0.3em] text-[var(--verde-hondo)]"
+        >
+            Santa Cruz de la Sierra &middot; 2026
+        </p>
+
+        <!-- REMATE -->
+        <div data-revelar="escala" data-retraso="0.5" class="opacity-0 mt-6 sm:mt-7">
+            <span class="ornamento-rombo block"></span>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* ═══════════════════════════════════════════════════════════ */
+    /* ◇ ORNAMENTO — filete con rombo al centro                    */
+    /* ═══════════════════════════════════════════════════════════ */
+    .ornamento {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.7rem;
+        width: 100%;
+        max-width: 15rem;
+        margin: 1.5rem 0 2.25rem;
+    }
+
+    .ornamento-linea {
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(
+            to right,
+            transparent,
+            var(--champan-tenue) 25%,
+            var(--champan) 100%
+        );
+    }
+
+    .ornamento-linea:last-of-type {
+        background: linear-gradient(
+            to left,
+            transparent,
+            var(--champan-tenue) 25%,
+            var(--champan) 100%
+        );
+    }
+
+    .ornamento-rombo {
+        width: 5px;
+        height: 5px;
+        flex-shrink: 0;
+        background-color: var(--champan);
+        transform: rotate(45deg);
+    }
+
+    @media (min-width: 9999px) {
+        .ornamento {
+            margin: 1.75rem 0 2.5rem;
+        }
+    }
+
+    /* ═══════════════════════════════════════════════════════════ */
+    /* ✒️ FIRMA                                                    */
+    /* La misma caligrafía que abre la invitación, ahora en        */
+    /* dorado para cerrarla. Va por máscara, así que el color se   */
+    /* cambia solo en `background-color`.                          */
+    /* ═══════════════════════════════════════════════════════════ */
+    .firma {
+        width: min(80vw, 16rem);
+        aspect-ratio: 1002 / 274;
+        background-color: var(--champan);
+        -webkit-mask: url("/imagenes/nombres.png") center / contain no-repeat;
+        mask: url("/imagenes/nombres.png") center / contain no-repeat;
+    }
+
+    @media (min-width: 9999px) {
+        .firma {
+            width: 22rem;
+        }
+    }
+</style>
