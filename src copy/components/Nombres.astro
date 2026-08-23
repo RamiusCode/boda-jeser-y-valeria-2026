@@ -1,0 +1,43 @@
+---
+// Nombres.astro — Jeser y Valeria en caligrafía (imagen)
+---
+
+<!-- ═══════════════════════════════════════════════════════════ -->
+<!-- 💍 SECCIÓN: NOMBRES DE LOS NOVIOS                           -->
+<!-- ═══════════════════════════════════════════════════════════ -->
+<section class="relative w-full pt-8 pb-4 sm:pt-10 sm:pb-5 md:pt-12 md:pb-6 overflow-hidden">
+    <div class="max-w-5xl mx-auto px-5 sm:px-8 flex justify-center">
+        <div data-revelar="escala" class="opacity-0">
+            <div class="nombres" role="img" aria-label="Jeser y Valeria"></div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* ═══════════════════════════════════════════════════════════ */
+    /* 💍 NOMBRES                                                  */
+    /* Igual que las iniciales: el PNG viene en negro sobre fondo  */
+    /* transparente, así que se usa de máscara y el color lo pone  */
+    /* el CSS. Para cambiarlo, toca solo `background-color`:       */
+    /*   var(--verde) · var(--champan) · var(--tinta)              */
+    /* ═══════════════════════════════════════════════════════════ */
+    .nombres {
+        width: min(88vw, 19rem);
+        aspect-ratio: 1002 / 274;
+        background-color: var(--verde);
+        -webkit-mask: url("/imagenes/nombres.png") center / contain no-repeat;
+        mask: url("/imagenes/nombres.png") center / contain no-repeat;
+    }
+
+    @media (min-width: 9999px) {
+        .nombres {
+            width: min(80vw, 27rem);
+        }
+    }
+
+    @media (min-width: 9999px) {
+        .nombres {
+            width: 34rem;
+        }
+    }
+</style>

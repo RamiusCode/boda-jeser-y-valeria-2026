@@ -1,5 +1,5 @@
 ---
-// Nombres.astro — Jeser y Valeria en caligrafía (imagen)
+// Nombres.astro — "Jeser y Valeria" en Boheme Floral (texto, ya no imagen)
 ---
 
 <!-- ═══════════════════════════════════════════════════════════ -->
@@ -8,7 +8,7 @@
 <section class="relative w-full pt-8 pb-4 sm:pt-10 sm:pb-5 md:pt-12 md:pb-6 overflow-hidden">
     <div class="max-w-5xl mx-auto px-5 sm:px-8 flex justify-center">
         <div data-revelar="escala" class="opacity-0">
-            <div class="nombres" role="img" aria-label="Jeser y Valeria"></div>
+            <p class="nombres">Jeser y Valeria</p>
         </div>
     </div>
 </section>
@@ -16,28 +16,36 @@
 <style>
     /* ═══════════════════════════════════════════════════════════ */
     /* 💍 NOMBRES                                                  */
-    /* Igual que las iniciales: el PNG viene en negro sobre fondo  */
-    /* transparente, así que se usa de máscara y el color lo pone  */
-    /* el CSS. Para cambiarlo, toca solo `background-color`:       */
-    /*   var(--verde) · var(--champan) · var(--tinta)              */
+    /* Antes era nombres.png usado como máscara; ahora es texto    */
+    /* vivo con Boheme Floral (se importa en global.css). Para     */
+    /* cambiar el color, toca solo `color`:                        */
+    /*   var(--verde) · var(--verde-noche) · var(--champan)        */
     /* ═══════════════════════════════════════════════════════════ */
     .nombres {
-        width: min(88vw, 19rem);
-        aspect-ratio: 1002 / 274;
-        background-color: var(--verde);
-        -webkit-mask: url("/imagenes/nombres.png") center / contain no-repeat;
-        mask: url("/imagenes/nombres.png") center / contain no-repeat;
+        font-family: "Boheme Floral", "Italianno", cursive;
+        color: var(--verde);
+        font-size: clamp(2.6rem, 13vw, 3.9rem);
+        /* Holgada: es letra caligráfica y los rasgos suben y bajan
+           bastante; con menos, la sección los recortaría. */
+        line-height: 1.35;
+        letter-spacing: 0.01em;
+        text-align: center;
+        padding: 0.12em 0.08em;
+        margin: 0;
+
+        /* AJUSTE ÓPTICO — centrado real.
+           La "J" de Boheme Floral saca su rasgo 0.673em a la izquierda de
+           su origen, fuera de la caja del texto. Por eso el navegador
+           centra bien la caja, pero la tinta queda 0.329em corrida a la
+           izquierda. Se compensa moviendo el bloque sin tocar el layout.
+           Si cambia el texto de los nombres, hay que recalcular el valor. */
+        position: relative;
+        left: 0.329em;
     }
 
     @media (min-width: 9999px) {
         .nombres {
-            width: min(80vw, 27rem);
-        }
-    }
-
-    @media (min-width: 9999px) {
-        .nombres {
-            width: 34rem;
+            font-size: 5.2rem;
         }
     }
 </style>

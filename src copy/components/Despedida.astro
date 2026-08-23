@@ -19,7 +19,7 @@
         <!-- MENSAJE -->
         <p
             data-revelar="abajo"
-            class="opacity-0 texto-invitacion uppercase text-[0.76rem] sm:text-[0.92rem] md:text-[0.99rem] tracking-[0.1em] leading-[2] text-[var(--verde-noche)]"
+            class="opacity-0 texto-invitacion uppercase text-[0.76rem] sm:text-[0.92rem] md:text-[0.99rem] tracking-[0.1em] leading-[2] text-[var(--champan)]"
         >
             Y as&iacute; comienza<br /> lo que so&ntilde;amos toda la vida
         </p>
@@ -28,7 +28,7 @@
         <p
             data-revelar="abajo"
             data-retraso="0.14"
-            class="opacity-0 texto-invitacion uppercase mt-5 sm:mt-6 text-[0.76rem] sm:text-[0.92rem] md:text-[0.99rem] tracking-[0.06em] leading-[1.9] text-[var(--verde-medio)]"
+            class="opacity-0 texto-invitacion uppercase mt-5 sm:mt-6 text-[0.76rem] sm:text-[0.92rem] md:text-[0.99rem] tracking-[0.06em] leading-[1.9] text-[var(--verde-hondo)]"
         >
             Gracias por caminar a nuestro lado<br /> y por hacer de este d&iacute;a
             un recuerdo<br /> que llevaremos para siempre
@@ -40,14 +40,14 @@
             data-retraso="0.28"
             class="opacity-0 mt-10 sm:mt-12"
         >
-            <p class="firma">Jeser y Valeria</p>
+            <div class="firma" role="img" aria-label="Jeser y Valeria"></div>
         </div>
 
         <!-- PIE -->
         <p
             data-revelar="abajo"
             data-retraso="0.4"
-            class="opacity-0 texto-invitacion uppercase mt-7 sm:mt-8 text-[0.62rem] sm:text-[0.72rem] tracking-[0.3em] indent-[0.3em] text-[var(--verde-medio)]"
+            class="opacity-0 texto-invitacion uppercase mt-7 sm:mt-8 text-[0.62rem] sm:text-[0.72rem] tracking-[0.3em] indent-[0.3em] text-[var(--verde-hondo)]"
         >
             Santa Cruz de la Sierra &middot; 2026
         </p>
@@ -109,32 +109,21 @@
 
     /* ═══════════════════════════════════════════════════════════ */
     /* ✒️ FIRMA                                                    */
-    /* La misma caligrafía que abre la invitación (Nombres.astro), */
-    /* algo más chica para cerrar. Antes era nombres.png usado de  */
-    /* máscara; ahora es texto vivo en Boheme Floral.              */
+    /* La misma caligrafía que abre la invitación, ahora en        */
+    /* dorado para cerrarla. Va por máscara, así que el color se   */
+    /* cambia solo en `background-color`.                          */
     /* ═══════════════════════════════════════════════════════════ */
     .firma {
-        font-family: "Boheme Floral", "Italianno", cursive;
-        color: var(--verde-hondo);
-        font-size: clamp(2.9rem, 14vw, 4.4rem);
-        /* Holgada: la caligráfica sube y baja bastante. */
-        line-height: 1.35;
-        letter-spacing: 0.01em;
-        text-align: center;
-        padding: 0.12em 0.08em;
-        margin: 0;
-
-        /* AJUSTE ÓPTICO — mismo caso que en Nombres.astro: la "J" de
-           Boheme Floral saca su rasgo 0.673em a la izquierda de su
-           origen, así que la tinta queda 0.329em corrida. Se compensa
-           sin tocar el layout. Si cambia el texto, recalcular. */
-        position: relative;
-        left: 0.329em;
+        width: min(80vw, 16rem);
+        aspect-ratio: 1002 / 274;
+        background-color: var(--champan);
+        -webkit-mask: url("/imagenes/nombres.png") center / contain no-repeat;
+        mask: url("/imagenes/nombres.png") center / contain no-repeat;
     }
 
     @media (min-width: 9999px) {
         .firma {
-            font-size: 5.8rem;
+            width: 22rem;
         }
     }
 </style>

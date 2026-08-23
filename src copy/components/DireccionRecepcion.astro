@@ -1,12 +1,12 @@
 ---
-// Direccion.astro — Dónde se celebra la ceremonia religiosa
+// DireccionRecepcion.astro — Dónde se celebra la recepción
 // ⚠️ Reemplazar `mapa` por el enlace exacto del pin cuando lo tengas.
 const mapa =
-    "https://www.google.com/maps/search/?api=1&query=Parroquia+Sagrado+Coraz%C3%B3n+de+Mar%C3%ADa+Equipetrol+Santa+Cruz+de+la+Sierra";
+    "https://www.google.com/maps/search/?api=1&query=Sal%C3%B3n%20La%20Rochelle%20Calle%2024%20de%20Septiembre%20465%20Santa%20Cruz%20de%20la%20Sierra";
 ---
 
 <!-- ═══════════════════════════════════════════════════════════ -->
-<!-- ⛪ SECCIÓN: DIRECCIÓN DE LA CEREMONIA                       -->
+<!-- 🥂 SECCIÓN: DIRECCIÓN DE LA RECEPCIÓN                       -->
 <!-- ═══════════════════════════════════════════════════════════ -->
 <section class="relative w-full pt-4 pb-12 sm:pt-5 sm:pb-16 md:pt-6 md:pb-20">
     <div class="max-w-lg mx-auto px-6 sm:px-8 flex flex-col items-center">
@@ -22,39 +22,38 @@ const mapa =
             <h2
                 class="relative titulo-seccion text-center text-[1.1rem] sm:text-[1.35rem] md:text-[1.5rem] tracking-normal"
             >
-                Ceremonia religiosa
+                Recepci&oacute;n social
             </h2>
 
             <!-- ICONO -->
             <div
-                class="icono-iglesia relative mt-7 sm:mt-9"
+                class="icono-brindis relative mt-7 sm:mt-9"
                 role="img"
-                aria-label="Iglesia"
+                aria-label="Copas de brindis"
             >
             </div>
 
-            <!-- PARROQUIA -->
+            <!-- SALÓN -->
             <h3
-                class="relative texto-invitacion uppercase mt-5 sm:mt-6 text-[0.76rem] sm:text-[0.92rem] md:text-[0.99rem] tracking-[0.1em] leading-[1.6] text-[var(--verde-noche)]"
+                class="relative texto-invitacion uppercase mt-5 sm:mt-6 text-[0.76rem] sm:text-[0.92rem] md:text-[0.99rem] tracking-[0.1em] leading-[1.6] text-[var(--champan)]"
             >
-                Parroquia Sagrado<br class="sm:hidden" /> Coraz&oacute;n de Mar&iacute;a
+                Sal&oacute;n La Rochelle
             </h3>
 
             <!-- DIRECCIÓN -->
             <p
-                class="relative texto-invitacion uppercase mt-2 sm:mt-2.5 text-[0.76rem] sm:text-[0.92rem] md:text-[0.99rem] tracking-[0.06em] leading-[1.7] text-[var(--verde-medio)]"
+                class="relative texto-invitacion uppercase mt-2 sm:mt-2.5 text-[0.76rem] sm:text-[0.92rem] md:text-[0.99rem] tracking-[0.06em] leading-[1.7] text-[var(--verde-hondo)]"
             >
-                Equipetrol, Av. San Mart&iacute;n<br /> Calle La Plata 8 Este
+                Calle 24 de Septiembre,<br /> entre Seoane y Cuellar #465
             </p>
 
             <!-- HORA -->
             <p
-                class="relative font-trajan text-[var(--verde-noche)] mt-4 sm:mt-5 text-[0.88rem] sm:text-[1.05rem] md:text-[1.15rem] leading-none"
+                class="relative font-trajan text-[var(--champan)] mt-4 sm:mt-5 text-[0.88rem] sm:text-[1.05rem] md:text-[1.15rem] leading-none"
             >
-                16:30 <span class="tracking-[0.1em]"
-                    >HORAS</span
-                >
+                19:00 <span class="tracking-[0.1em]">HORAS</span>
             </p>
+
             <!-- BOTÓN -->
             <a
                 href={mapa}
@@ -70,21 +69,21 @@ const mapa =
 
 <style>
     /* ═══════════════════════════════════════════════════════════ */
-    /* ⛪ ICONO                                                    */
-    /* El PNG viene en negro sobre fondo transparente, así que se  */
-    /* usa como máscara y el color lo pone el CSS. Para cambiarlo, */
-    /* toca solo `background-color`.                               */
+    /* 🥂 ICONO                                                    */
+    /* Igual que el de la iglesia: el PNG viene en negro sobre     */
+    /* fondo transparente, se usa como máscara y el color lo pone  */
+    /* el CSS. Para cambiarlo, toca solo `background-color`.       */
     /* ═══════════════════════════════════════════════════════════ */
-    .icono-iglesia {
+    .icono-brindis {
         width: 3.6rem;
         aspect-ratio: 1;
         background-color: var(--verde);
-        -webkit-mask: url("/imagenes/iglesia.png") center / contain no-repeat;
-        mask: url("/imagenes/iglesia.png") center / contain no-repeat;
+        -webkit-mask: url("/imagenes/brindis.png") center / contain no-repeat;
+        mask: url("/imagenes/brindis.png") center / contain no-repeat;
     }
 
     @media (min-width: 9999px) {
-        .icono-iglesia {
+        .icono-brindis {
             width: 4.4rem;
         }
     }

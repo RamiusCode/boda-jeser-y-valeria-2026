@@ -48,7 +48,7 @@
     <!-- También en absoluto, anclado a un punto del sobre, para que no
          baje ni suba según lo alta que sea la pantalla. -->
     <div class="absolute left-1/2 top-[72%] -translate-x-1/2 z-10">
-        <p class="nombres-sobre">Jeser y Valeria</p>
+        <div class="nombres-sobre" role="img" aria-label="Jeser y Valeria"></div>
     </div>
 </section>
 
@@ -148,34 +148,21 @@
 
     /* ═══════════════════════════════════════════════════════════ */
     /* ✒️ NOMBRES                                                  */
-    /* Antes era nombres.png usado de máscara; ahora es texto vivo */
-    /* en Boheme Floral, igual que en Nombres.astro y Despedida.   */
-    /* Va en el tono claro para que resalte sobre el verde oscuro  */
-    /* del sobre: en verde no se leería.                           */
+    /* El PNG viene en negro sobre fondo transparente: va como     */
+    /* máscara y el color lo pone el CSS, en dorado claro para     */
+    /* que resalte sobre el verde del sobre.                       */
     /* ═══════════════════════════════════════════════════════════ */
     .nombres-sobre {
-        font-family: "Boheme Floral", "Italianno", cursive;
-        color: var(--champan-luz);
-        font-size: clamp(2.8rem, 14vw, 4.1rem);
-        /* Holgada: la caligráfica sube y baja bastante. */
-        line-height: 1.35;
-        letter-spacing: 0.01em;
-        text-align: center;
-        white-space: nowrap;
-        padding: 0.12em 0.08em;
-        margin: 0;
-
-        /* AJUSTE ÓPTICO — mismo caso que en Nombres.astro: la "J" de
-           Boheme Floral saca su rasgo 0.673em a la izquierda de su
-           origen, así que la tinta queda 0.329em corrida. Se compensa
-           sin tocar el layout. Si cambia el texto, recalcular. */
-        position: relative;
-        left: 0.329em;
+        width: min(78vw, 17rem);
+        aspect-ratio: 1002 / 274;
+        background-color: var(--champan-luz);
+        -webkit-mask: url("/imagenes/nombres.png") center / contain no-repeat;
+        mask: url("/imagenes/nombres.png") center / contain no-repeat;
     }
 
     @media (min-width: 9999px) {
         .nombres-sobre {
-            font-size: 5.4rem;
+            width: 22rem;
         }
     }
 </style>

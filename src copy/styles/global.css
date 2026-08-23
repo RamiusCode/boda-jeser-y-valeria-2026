@@ -89,26 +89,13 @@
   font-display: swap;
 }
 
-/* Boheme Floral — decorativa, para títulos y detalles sueltos.
-   El archivo tiene un espacio en el nombre: va como %20 en la URL. */
-@font-face {
-  font-family: 'Boheme Floral';
-  src: url('/fonts/Boheme%20Floral.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 /* ═══════════════════════════════════════════════════════════ */
-/* 🎨 PALETA — TODO VERDE (ya no hay dorado)                   */
+/* 🎨 PALETA — CHAMPAGNE · VERDE                               */
 /* ═══════════════════════════════════════════════════════════ */
 /*                                                             */
-/*  VERDE HONDO→ ornamentos: filetes, rombos, marcos y las     */
-/*               esquinas del QR (antes iban en dorado).       */
-/*  VERDE NOCHE→ letras destacadas: títulos de sección, cifras */
-/*               y las frases fuertes (lo que antes era oro).  */
-/*  VERDE MEDIO→ cuerpo de texto en versalitas, un tono más    */
-/*               suave para que se note la jerarquía.          */
+/*  CHAMPAGNE  → texto principal: "Nos casamos", bendición,    */
+/*               títulos de sección, cifras y filetes.         */
+/*  VERDE HONDO→ cuerpo de texto en versalitas.                */
 /*  SALVIA     → iniciales, bordes, marcos, botones, eje del   */
 /*               itinerario y puntos.                          */
 /*                                                             */
@@ -119,18 +106,12 @@
   --papel: #fcfaf5;
   --papel-calido: #f6f0e4;
 
-  /* SIN DORADO. La invitación ya no lleva oro en ninguna parte: estos
-     nombres se conservan porque los usan todos los componentes, pero
-     ahora apuntan a los verdes. Para volver al dorado, basta devolver
-     aquí los valores originales:
-       --champan: #b4914e · --champan-claro: #cbae77
-       --champan-tenue: #e6dac2 · --champan-luz: #f2eadb
-       --champan-oscuro: #8e7038                                   */
-  --champan: var(--verde-hondo); /* filetes, rombos, marcos, esquinas */
-  --champan-claro: var(--verde);
-  --champan-tenue: var(--verde-tenue); /* hilos muy finos y divisores */
-  --champan-luz: #edf2ea; /* claro sobre el verde del sobre (Portada) */
-  --champan-oscuro: var(--verde-noche);
+  /* Champagne — tono medio */
+  --champan: #b4914e;
+  --champan-claro: #cbae77;
+  --champan-tenue: #e6dac2;
+  --champan-luz: #f2eadb; /* dorado muy claro: texto sobre el sobre verde */
+  --champan-oscuro: #8e7038;
 
   /* Verde salvia — color del cliente, y sus dos vecinos del mismo tono.
      Salvia manda en lo estructural (bordes, marcos, ejes, botones);
@@ -140,11 +121,8 @@
   --verde-hondo: #465e49;
   --verde-tenue: #d5ddd0;
 
-  /* Los dos tonos de LETRA. Antes uno era dorado y el otro verde; ahora
-     los dos son verdes, pero bien separados para que se note la jerarquía:
-     el noche manda (va donde antes iba el dorado) y el medio acompaña. */
-  --verde-noche: #2f4433; /* destacados: títulos, cifras, frases fuertes */
-  --verde-medio: #55705a; /* cuerpo de texto en versalitas, más suave */
+  /* Alias heredado: apunta al verde legible para textos pequeños */
+  --verde-medio: var(--verde-hondo);
 
   /* Negro — ya no se usa en textos; queda por si hace falta */
   --tinta: #141414;
@@ -170,12 +148,6 @@
   font-family: 'Italianno', cursive !important;
 }
 
-/* Boheme Floral: decorativa. Se usa suelta, donde se la llame con
-   la clase `font-boheme` (todavía no aplicada en ningún componente). */
-.font-boheme {
-  font-family: 'Boheme Floral', 'Trajan Pro', serif !important;
-}
-
 /* Alias heredados — apuntan a Trajan para no romper componentes viejos */
 .font-sc,
 .font-cormorant {
@@ -189,19 +161,19 @@
 /* Van en la capa `components` para que cualquier utilidad de Tailwind
    (por ejemplo text-[var(--champan)]) pueda sobrescribirlas. */
 @layer components {
-  /* Texto corrido en versalitas - VERDE MEDIO */
+  /* Texto corrido en versalitas — VERDE HONDO */
   .texto-invitacion {
     font-family: 'Trajan Pro', 'Cormorant SC', serif;
-    color: var(--verde-medio);
+    color: var(--verde-hondo);
     letter-spacing: 0.045em;
     line-height: 1.6;
   }
 
-  /* Titulo de seccion - VERDE NOCHE */
+  /* Título de sección — CHAMPAGNE */
   .titulo-seccion {
     font-family: 'Trajan Pro', 'Cormorant SC', serif;
     text-transform: uppercase;
-    color: var(--verde-noche);
+    color: var(--champan);
     font-weight: 400;
     letter-spacing: 0.08em;
     line-height: 1;

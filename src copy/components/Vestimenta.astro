@@ -1,9 +1,9 @@
 ---
-// SinNinos.astro — Celebración solo para adultos
+// Vestimenta.astro — Código de vestimenta: traje de gala
 ---
 
 <!-- ═══════════════════════════════════════════════════════════ -->
-<!-- 🚫 SECCIÓN: SIN NIÑOS                                       -->
+<!-- 🤵 SECCIÓN: CÓDIGO DE VESTIMENTA                            -->
 <!-- ═══════════════════════════════════════════════════════════ -->
 <section class="relative w-full pt-4 pb-4 sm:pt-5 sm:pb-5 md:pt-6 md:pb-6">
     <div
@@ -21,42 +21,78 @@
             data-revelar="abajo"
             class="opacity-0 titulo-seccion text-center text-[1.1rem] sm:text-[1.35rem] md:text-[1.5rem] tracking-normal"
         >
-            Solo adultos
+            C&oacute;digo de vestimenta
         </h2>
 
-        <!-- ICONO · QUITADO A PEDIDO. Descomentar para volver a mostrarlo.
-        <div
-            data-revelar="escala"
-            data-retraso="0.12"
-            class="opacity-0 mt-8 sm:mt-10"
-        >
-            <div class="icono-sin-ninos" role="img" aria-label="Sin ni&ntilde;os">
-            </div>
-        </div>
-        -->
-
-        <!-- MENSAJE -->
+        <!-- ETIQUETA · única pieza de la sección, por eso va resaltada -->
         <p
             data-revelar="abajo"
-            data-retraso="0.12"
-            class="opacity-0 texto-invitacion uppercase mt-6 sm:mt-7 text-[0.76rem] sm:text-[0.92rem] md:text-[0.99rem] tracking-[0.1em] leading-[1.6] text-[var(--verde-noche)]"
+            data-retraso="0.1"
+            class="opacity-0 texto-invitacion uppercase mt-5 sm:mt-6 mb-2 sm:mb-3 text-[0.95rem] sm:text-[1.15rem] md:text-[1.25rem] tracking-[0.18em] indent-[0.18em] text-[var(--champan)]"
         >
-            Por esta ocasi&oacute;n,<br /> celebraremos sin ni&ntilde;os
+            Traje de gala
         </p>
 
-        <!-- NOTA EN RECUADRO -->
+        <!-- DAMAS | CABALLEROS (con sus siluetas) · OCULTO POR AHORA.
+             Descomentar este bloque completo para volver a mostrarlo.
+        <div
+            class="w-full grid grid-cols-[1fr_1px_1fr] items-end gap-4 sm:gap-7 mt-9 sm:mt-11"
+        >
+            <div
+                data-revelar="izquierda"
+                data-retraso="0.12"
+                class="opacity-0 flex flex-col items-center"
+            >
+                <div
+                    class="silueta silueta-mujer"
+                    role="img"
+                    aria-label="Vestido largo de gala"
+                >
+                </div>
+                <p
+                    class="texto-invitacion uppercase mt-6 sm:mt-7 text-[0.8rem] sm:text-[0.94rem] md:text-[1rem] tracking-[0.2em] text-[var(--verde-hondo)]"
+                >
+                    Damas
+                </p>
+            </div>
+
+            <span
+                class="self-stretch w-px bg-[var(--champan-tenue)] my-1"
+            ></span>
+
+            <div
+                data-revelar="derecha"
+                data-retraso="0.2"
+                class="opacity-0 flex flex-col items-center"
+            >
+                <div
+                    class="silueta silueta-hombre"
+                    role="img"
+                    aria-label="Traje formal de gala"
+                >
+                </div>
+                <p
+                    class="texto-invitacion uppercase mt-6 sm:mt-7 text-[0.8rem] sm:text-[0.94rem] md:text-[1rem] tracking-[0.2em] text-[var(--verde-hondo)]"
+                >
+                    Caballeros
+                </p>
+            </div>
+        </div>
+
+        NOTA EN RECUADRO (color blanco para la novia) · QUITADA A PEDIDO.
         <div
             data-revelar="escala"
             data-retraso="0.3"
-            class="opacity-0 recuadro-nota relative mt-9 sm:mt-11 px-7 py-6 sm:px-10 sm:py-8"
+            class="opacity-0 recuadro-nota relative mt-11 sm:mt-14 px-7 py-6 sm:px-10 sm:py-8"
         >
             <span class="recuadro-nota-filete"></span>
             <p
-                class="relative texto-invitacion uppercase text-[0.76rem] sm:text-[0.92rem] md:text-[0.99rem] tracking-[0.06em] leading-[1.7] text-[var(--verde-medio)]"
+                class="relative texto-invitacion uppercase text-[0.76rem] sm:text-[0.92rem] md:text-[0.99rem] tracking-[0.06em] leading-[1.7] text-[var(--verde-hondo)]"
             >
-                Gracias por comprender y disfrutar<br /> la noche con nosotros
+                Les pedimos reservar el color blanco<br /> para la novia
             </p>
         </div>
+        -->
     </div>
 </section>
 
@@ -109,7 +145,9 @@
     }
 
     /* ═══════════════════════════════════════════════════════════ */
-    /* ▢ RECUADRO DE LA NOTA                                       */
+    /* ▢ RECUADRO DE LA NOTA — SIN USO POR AHORA                   */
+    /* Cuadro blanco con filete dorado y un segundo hilo interior, */
+    /* esquinas rectas: es el bloque de aviso de la papelería.     */
     /* ═══════════════════════════════════════════════════════════ */
     .recuadro-nota {
         background-color: #ffffff;
@@ -124,21 +162,35 @@
     }
 
     /* ═══════════════════════════════════════════════════════════ */
-    /* 🚫 ICONO — SIN USO POR AHORA (markup comentado arriba)      */
-    /* El PNG viene en negro sobre fondo transparente, así que se  */
-    /* usa como máscara y el color lo pone el CSS.                 */
+    /* 👗 SILUETAS — SIN USO POR AHORA                             */
+    /* El markup de las siluetas está comentado arriba; estos      */
+    /* estilos quedan listos por si se vuelven a mostrar.          */
+    /* Los PNG vienen en negro sobre fondo transparente, así que   */
+    /* se usan como máscara y el color lo pone el CSS. La altura   */
+    /* es la misma en las dos y el ancho lo da su proporción real, */
+    /* para que ninguna se deforme.                                */
     /* ═══════════════════════════════════════════════════════════ */
-    .icono-sin-ninos {
-        width: 4rem;
-        aspect-ratio: 978 / 967;
+    .silueta {
+        height: 6.5rem;
         background-color: var(--verde);
-        -webkit-mask: url("/imagenes/restriccion.png") center / contain no-repeat;
-        mask: url("/imagenes/restriccion.png") center / contain no-repeat;
+    }
+
+    .silueta-mujer {
+        aspect-ratio: 405 / 513;
+        -webkit-mask: url("/imagenes/trajemujer.png") bottom / contain no-repeat;
+        mask: url("/imagenes/trajemujer.png") bottom / contain no-repeat;
+    }
+
+    .silueta-hombre {
+        aspect-ratio: 212 / 505;
+        -webkit-mask: url("/imagenes/trajehombre.png") bottom / contain
+            no-repeat;
+        mask: url("/imagenes/trajehombre.png") bottom / contain no-repeat;
     }
 
     @media (min-width: 9999px) {
-        .icono-sin-ninos {
-            width: 4.8rem;
+        .silueta {
+            height: 8.5rem;
         }
     }
 </style>

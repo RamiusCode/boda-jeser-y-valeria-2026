@@ -1,0 +1,238 @@
+---
+// src/layouts/Layout.astro
+import "../styles/global.css";
+export interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="m-0 p-0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light only" />
+    <link rel="icon" type="image/png" href="/iconos/Anillos.png" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+
+    <!-- ═══ TIPOGRAFÍAS ═══ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Italianno&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Cormorant+SC:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ═══ MODO CLARO FORZADO ═══ */
+      :root {
+        color-scheme: light only;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        color-scheme: light only;
+      }
+
+      html {
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden;
+        color-scheme: light only;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        min-height: 100vh;
+        overflow-x: hidden;
+        color-scheme: light only;
+        position: relative;
+        background-color: var(--papel);
+        color: var(--verde-hondo);
+      }
+
+      /* Textura de papel muy sutil, como el impreso */
+      body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("/imagenes/BlancoTextura.png");
+        background-repeat: repeat;
+        background-size: contain;
+        opacity: 0.28;
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      /* La invitación vive siempre en una columna del ancho de un
+         teléfono, centrada. En escritorio y tablet se ve exactamente
+         igual que en móvil, con el papel alrededor. */
+      main {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: var(--ancho-movil);
+        margin-inline: auto;
+        background: transparent !important;
+      }
+
+      /* Fuera de la columna se marca el borde del papel, para que en
+         pantallas grandes se lea como una pieza y no como una web
+         estrecha. Este corte SÍ debe dispararse. */
+      @media (min-width: 500px) {
+        main {
+          box-shadow:
+            0 0 0 1px var(--champan-tenue),
+            0 8px 50px rgb(47 65 54 / 0.07);
+        }
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          color-scheme: light only !important;
+        }
+
+        html,
+        body {
+          background-color: var(--papel) !important;
+          color: var(--verde-hondo) !important;
+        }
+
+        * {
+          color-scheme: light only !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="min-h-screen m-0 p-0">
+    <noscript>
+      <style>
+        [data-revelar] {
+          opacity: 1 !important;
+        }
+      </style>
+    </noscript>
+
+    <main class="m-0 p-0 overflow-x-hidden">
+      <slot />
+    </main>
+
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <!-- ✨ REVELADO AL HACER SCROLL (compartido por las secciones)  -->
+    <!-- ═══════════════════════════════════════════════════════════ -->
+    <script>
+      import { gsap } from "gsap";
+      import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      document.addEventListener("DOMContentLoaded", () => {
+        /* Quien pidió menos movimiento en su sistema solo ve el fundido. */
+        const menosMovimiento = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+
+        /* Recorridos cortos: el elemento ya está casi en su sitio y solo
+           termina de asentarse. Distancias largas se leen como rebote. */
+        const recorridos: Record<string, gsap.TweenVars> = {
+          abajo: { y: 18 },
+          izquierda: { x: -22 },
+          derecha: { x: 22 },
+          escala: { scale: 0.97 },
+        };
+
+        /* "reset" devuelve el elemento a su estado inicial al salir por
+           arriba, así la entrada se repite cada vez que se baja de nuevo. */
+        const disparador = (el: Element, inicio = "top bottom-=16px") => ({
+          trigger: el,
+          start: inicio,
+          toggleActions: "play none none reset",
+        });
+
+        /* ═══ ELEMENTOS ═══ */
+        document
+          .querySelectorAll<HTMLElement>("[data-revelar]")
+          .forEach((el) => {
+            const desde = el.dataset.revelar || "abajo";
+            const retraso = parseFloat(el.dataset.retraso || "0");
+
+            const inicio: gsap.TweenVars = { opacity: 0 };
+            if (!menosMovimiento) {
+              Object.assign(inicio, recorridos[desde] || recorridos.abajo);
+              inicio.filter = "blur(6px)";
+            }
+
+            gsap.fromTo(el, inicio, {
+              opacity: 1,
+              x: 0,
+              y: 0,
+              scale: 1,
+              filter: "blur(0px)",
+              duration: menosMovimiento ? 0.8 : 1.4,
+              delay: retraso,
+              ease: "power3.out",
+              scrollTrigger: disparador(el),
+            });
+          });
+
+        /* ═══ TÍTULOS ═══
+           Las letras entran abiertas y se cierran hasta su espaciado real.
+           Es el gesto de la papelería grabada: el texto se asienta. */
+        if (!menosMovimiento) {
+          document
+            .querySelectorAll<HTMLElement>(".titulo-seccion")
+            .forEach((titulo) => {
+              const actual =
+                parseFloat(getComputedStyle(titulo).letterSpacing) || 0;
+
+              gsap.fromTo(
+                titulo,
+                { letterSpacing: actual + 9 + "px" },
+                {
+                  letterSpacing: actual + "px",
+                  duration: 1.8,
+                  ease: "power3.out",
+                  scrollTrigger: disparador(titulo),
+                },
+              );
+            });
+        }
+
+        /* ═══ FILETES ═══ Se trazan desde el centro hacia los extremos. */
+        document
+          .querySelectorAll<HTMLElement>("[data-linea]")
+          .forEach((linea) => {
+            gsap.fromTo(
+              linea,
+              { scaleX: 0 },
+              {
+                scaleX: 1,
+                duration: 1.6,
+                ease: "power2.inOut",
+                scrollTrigger: disparador(linea),
+              },
+            );
+          });
+
+        /* Recalcular posiciones cuando ya cargaron fuentes e imágenes,
+           y al retirarse el sobre de la portada. */
+        window.addEventListener("load", () => ScrollTrigger.refresh());
+        document
+          .getElementById("btn-sello")
+          ?.addEventListener("click", () =>
+            setTimeout(() => ScrollTrigger.refresh(), 900),
+          );
+      });
+    </script>
+  </body>
+</html>

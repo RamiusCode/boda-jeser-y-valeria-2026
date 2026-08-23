@@ -1,8 +1,7 @@
 ---
-// Sugerencia.astro — Sugerencia de regalos en tres opciones:
-//   I. QR para transferencia · II. Lluvia de sobres · III. Mesa de regalos
+// Sugerencia.astro — Sugerencia de regalos, QR y lluvia de sobres
 // Sin tarjeta: va directo sobre el papel, con ornamentos de papelería.
-// ⚠️ Reemplazar /imagenes/qr.png por el QR real de la transferencia.
+// ⚠️ Reemplazar /imagenes/qr.png por el QR real de la lista de regalos.
 ---
 
 <!-- ═══════════════════════════════════════════════════════════ -->
@@ -67,13 +66,13 @@
         <p
             data-revelar="abajo"
             data-retraso="0.2"
-            class="opacity-0 texto-invitacion uppercase mt-5 sm:mt-6 text-[0.76rem] sm:text-[0.92rem] md:text-[0.99rem] tracking-[0.12em] leading-[1.7] text-[var(--verde-medio)]"
+            class="opacity-0 texto-invitacion uppercase mt-5 sm:mt-6 text-[0.76rem] sm:text-[0.92rem] md:text-[0.99rem] tracking-[0.12em] leading-[1.7] text-[var(--verde-hondo)]"
         >
             &iexcl;Su presencia es el mejor regalo!<br /> En caso que deseen hacernos
             un obsequio<br /> les damos las siguientes opciones
         </p>
 
-        <!-- ═══ OPCIÓN I · QR PARA TRANSFERENCIA ═══ -->
+        <!-- ═══ OPCIÓN I ═══ -->
         <div class="ornamento opacity-0" data-revelar="abajo">
             <span class="ornamento-linea"></span>
             <span class="ornamento-rombo"></span>
@@ -83,9 +82,9 @@
         <h3
             data-revelar="abajo"
             data-retraso="0.08"
-            class="opacity-0 texto-invitacion uppercase text-[0.76rem] sm:text-[0.92rem] md:text-[0.99rem] tracking-[0.1em] leading-[1.6] text-[var(--verde-noche)]"
+            class="opacity-0 texto-invitacion uppercase text-[0.76rem] sm:text-[0.92rem] md:text-[0.99rem] tracking-[0.1em] leading-[1.6] text-[var(--champan)]"
         >
-            QR para transferencia
+            Mesa de regalos
         </h3>
 
         <!-- CÓDIGO QR CON ESQUINAS -->
@@ -101,7 +100,7 @@
 
             <img
                 src="/imagenes/qr.png"
-                alt="C&oacute;digo QR para transferencia"
+                alt="C&oacute;digo QR de la mesa de regalos"
                 class="w-36 h-36 sm:w-44 sm:h-44 object-contain"
                 loading="lazy"
             />
@@ -110,12 +109,12 @@
         <p
             data-revelar="abajo"
             data-retraso="0.22"
-            class="opacity-0 texto-invitacion uppercase mt-4 text-[0.66rem] sm:text-[0.75rem] tracking-[0.2em] text-[var(--verde-medio)]"
+            class="opacity-0 texto-invitacion uppercase mt-4 text-[0.66rem] sm:text-[0.75rem] tracking-[0.2em] text-[var(--verde-hondo)]"
         >
             Escanea el c&oacute;digo
         </p>
 
-        <!-- ═══ OPCIÓN II · LLUVIA DE SOBRES ═══ -->
+        <!-- ═══ OPCIÓN II ═══ -->
         <div class="ornamento opacity-0" data-revelar="abajo">
             <span class="ornamento-linea"></span>
             <span class="ornamento-rombo"></span>
@@ -125,7 +124,7 @@
         <h3
             data-revelar="abajo"
             data-retraso="0.08"
-            class="opacity-0 texto-invitacion uppercase text-[0.76rem] sm:text-[0.92rem] md:text-[0.99rem] tracking-[0.1em] leading-[1.6] text-[var(--verde-noche)]"
+            class="opacity-0 texto-invitacion uppercase text-[0.76rem] sm:text-[0.92rem] md:text-[0.99rem] tracking-[0.1em] leading-[1.6] text-[var(--champan)]"
         >
             Lluvia de sobres
         </h3>
@@ -133,49 +132,25 @@
         <p
             data-revelar="abajo"
             data-retraso="0.16"
-            class="opacity-0 texto-invitacion uppercase mt-2 sm:mt-2.5 text-[0.76rem] sm:text-[0.92rem] md:text-[0.99rem] tracking-[0.06em] leading-[1.7] text-[var(--verde-medio)]"
+            class="opacity-0 texto-invitacion uppercase mt-2 sm:mt-2.5 text-[0.76rem] sm:text-[0.92rem] md:text-[0.99rem] tracking-[0.06em] leading-[1.7] text-[var(--verde-hondo)]"
         >
             Tendremos un buz&oacute;n de sobres<br /> por si quieres depositar tu
             regalo
         </p>
 
-        <!-- ═══ OPCIÓN III · MESA DE REGALOS ═══ -->
-        <div class="ornamento opacity-0" data-revelar="abajo">
-            <span class="ornamento-linea"></span>
-            <span class="ornamento-rombo"></span>
-            <span class="ornamento-linea"></span>
-        </div>
-
-        <h3
-            data-revelar="abajo"
-            data-retraso="0.08"
-            class="opacity-0 texto-invitacion uppercase text-[0.76rem] sm:text-[0.92rem] md:text-[0.99rem] tracking-[0.1em] leading-[1.6] text-[var(--verde-noche)]"
-        >
-            Mesa de regalos
-        </h3>
-
-        <!-- LOGO NOVIOS MULTICENTER -->
+        <!-- LOGO CELEBRACIONES MULTICENTER -->
         <div
             data-revelar="escala"
-            data-retraso="0.16"
-            class="opacity-0 mt-6 sm:mt-7"
+            data-retraso="0.24"
+            class="opacity-0 mt-7 sm:mt-8"
         >
             <div
                 class="logo-multicenter"
                 role="img"
-                aria-label="Novios Multicenter"
+                aria-label="Celebraciones Multicenter"
             >
             </div>
         </div>
-
-        <!-- CIUDADES -->
-        <p
-            data-revelar="abajo"
-            data-retraso="0.24"
-            class="opacity-0 texto-invitacion uppercase mt-4 text-[0.66rem] sm:text-[0.75rem] tracking-normal text-[var(--verde-medio)]"
-        >
-            (La Paz, Cochabamba y Santa Cruz)
-        </p>
     </div>
 </section>
 
@@ -277,17 +252,16 @@
     }
 
     /* ═══════════════════════════════════════════════════════════ */
-    /* 🏬 LOGO NOVIOS MULTICENTER                                  */
+    /* 🏬 LOGO CELEBRACIONES MULTICENTER                           */
     /* El PNG viene en negro sobre fondo transparente, así que se  */
     /* usa como máscara y el color lo pone el CSS.                 */
     /* ═══════════════════════════════════════════════════════════ */
     .logo-multicenter {
         width: 10rem;
-        aspect-ratio: 2172 / 724;
+        aspect-ratio: 430 / 118;
         background-color: var(--verde-hondo);
-        -webkit-mask: url("/imagenes/novio-multicenter.png") center / contain
-            no-repeat;
-        mask: url("/imagenes/novio-multicenter.png") center / contain no-repeat;
+        -webkit-mask: url("/imagenes/logo-alpha.png") center / contain no-repeat;
+        mask: url("/imagenes/logo-alpha.png") center / contain no-repeat;
     }
 
     @media (min-width: 9999px) {
